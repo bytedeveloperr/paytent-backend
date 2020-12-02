@@ -1,0 +1,28 @@
+{
+  "name": "paytent-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon -r dotenv/config index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.27.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.3",
+    "otp-generator": "^2.0.0",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  },
+  "engines": {
+    "node": "15.0.1"
+  }
+}
