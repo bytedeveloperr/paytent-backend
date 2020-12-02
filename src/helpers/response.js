@@ -50,7 +50,7 @@ let response = {
 		};
 	},
 
-	success(message, data, status) {
+	custom(message, data, status) {
 		return {
 			success: true,
 			message,
