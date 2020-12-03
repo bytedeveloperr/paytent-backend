@@ -10,9 +10,12 @@ import jwt from "jsonwebtoken";
 import callAuthService from "./authService.js";
 import callWalletService from "./walletService.js";
 import callDashboardService from "./dashboardService.js";
+import callFundService from "./fund.js";
 import response from "../helpers/response.js";
-import { connection, users, wallets, ObjectId } from "../database/index.js";
+import { connection, users,fund, wallets, ObjectId } from "../database/index.js";
 import { validateRegistration, validateLogin } from "../validations/index.js";
+import axios from "axios";
+import {initialize,verify} from "../utils/paystack.js";
 
 const authService = callAuthService({
 	response,
@@ -24,7 +27,21 @@ const authService = callAuthService({
 	otpGenerator,
 	ObjectId,
 });
-const walletService = callWalletService({ response, wallets, ObjectId });
+const fundWalletService = callFundService({ 
+	response,
+	 fund,
+	  ObjectId,
+	  axios,
+	  initialize,
+	  verify 
+	});
+const walletService = callWalletService({
+	 response,
+	  wallets,
+		users,
+		fund,
+	   ObjectId
+	 });
 const dashboardService = callDashboardService({
 	response,
 	users,
@@ -32,4 +49,4 @@ const dashboardService = callDashboardService({
 	ObjectId,
 });
 
-export { authService, walletService, dashboardService };
+export { authService, walletService, dashboardService ,fundWalletService};

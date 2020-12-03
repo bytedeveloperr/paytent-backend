@@ -63,11 +63,12 @@ const authService = ({
 							process.env.JWT_SECRET,
 							{ expiresIn: "3d" }
 						);
-						return response.custom(
+						return response.success(
 							"User registered",
 							{ accessToken },
 							201
 						);
+						console.log(";lf;cv")
 					}
 				} catch (e) {
 					return response.serverError();
@@ -100,9 +101,9 @@ const authService = ({
 								process.env.JWT_SECRET,
 								{ expiresIn: "3d" }
 							);
-							return response.custom(
+							return response.success(
 								"User loggedin",
-								{ accessToken },
+								 `Bearer ${accessToken}` ,
 								200
 							);
 						} else {
@@ -112,11 +113,11 @@ const authService = ({
 						}
 					} else {
 						return response.badRequestError(
-							"Email already registered"
+							"no user found"
 						);
 					}
 				} catch (e) {
-					return response.serverError();
+					return response.serverError(e);
 				}
 			} else {
 				return response.badRequestError(isValid);

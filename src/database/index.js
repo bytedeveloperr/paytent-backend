@@ -8,6 +8,7 @@ import mongodb from "mongodb";
 import makeConnection from "./connection.js";
 import _users from "./users.js";
 import _wallets from "./wallets.js";
+import _fund from "./fund.js";
 
 const { MongoClient, ObjectId } = mongodb;
 
@@ -17,5 +18,6 @@ const database = connection.db(process.env.DB_NAME);
 // Initialize collections
 const users = await _users({ database, ObjectId });
 const wallets = await _wallets({ database, ObjectId });
+const fund = await _fund({ database, ObjectId });
 
-export { connection, users, ObjectId, wallets };
+export { connection, users, ObjectId, wallets,fund };

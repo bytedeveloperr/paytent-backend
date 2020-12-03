@@ -7,10 +7,12 @@
 import authRoutes from "./auth.js";
 import walletRoutes from "./wallet.js";
 import dashboardRoutes from "./dashboard.js";
+import fundRoutes from "./fund.js";
 import {
 	walletController,
 	authController,
 	dashboardController,
+	fundWalletController
 } from "../controllers/index.js";
 import { authUser } from "../middlewares/index.js";
 
@@ -21,6 +23,7 @@ const routes = (router) => {
 		dashboardRoutes({ router, dashboardController })
 	);
 	router.use("/auth", authRoutes({ router, authUser, authController }));
+	router.use("/fundWallet", fundRoutes({ router, authUser, fundWalletController }));
 	router.use(
 		"/wallets",
 		walletRoutes({ router, authUser, walletController })
